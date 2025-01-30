@@ -1,0 +1,73 @@
+# ParserIMAP
+
+ParserIMAP — это Python-приложение для работы с почтовыми ящиками через протокол IMAP. Оно позволяет извлекать, фильтровать, обрабатывать электронные письма и управлять whitelist отправителей.
+
+## Возможности
+- Подключение к почтовым серверам через IMAP
+- Получение списка писем с фильтрацией по дате, отправителю и теме
+- Парсинг содержимого писем (текст, вложения)
+- Распознавание текста в PDF-вложениях через OCR (EasyOCR, PaddleOCR, Tesseract, TrOCR)
+- Автоответы на письма, не содержащие вложений или отправленные не из whitelist
+- Сохранение обработанных писем в базе данных SQLite
+- Управление whitelist отправителей через GUI
+- Логирование работы в файл
+
+## Установка
+### Требования
+- Python 3.7+
+- Установленные библиотеки из `requirements.txt`
+
+### Установка зависимостей
+Склонируйте репозиторий и установите необходимые зависимости:
+
+```bash
+# Клонирование репозитория
+git clone https://github.com/ReaGemt/ParserIMAP.git
+cd ParserIMAP
+
+# Установка зависимостей
+pip install -r requirements.txt
+```
+
+## Использование
+1. Настройте конфигурацию в файле `config.py`:
+   - Укажите IMAP и SMTP-серверы
+   - Настройте логирование
+   - Определите параметры OCR
+2. Запустите обработку писем:
+
+```bash
+python main.py
+```
+
+3. Для управления whitelist запустите:
+
+```bash
+python manage_whitelist.py
+```
+
+## Пример кода
+Простой пример подключения и получения писем:
+
+```python
+from imaplib import IMAP4_SSL
+
+server = "imap.example.com"
+username = "your_email@example.com"
+password = "your_password"
+
+with IMAP4_SSL(server) as mail:
+    mail.login(username, password)
+    mail.select("inbox")
+    status, messages = mail.search(None, "ALL")
+    print("Всего писем:", len(messages[0].split()))
+```
+
+## Контакты
+Если у вас возникли вопросы или предложения, свяжитесь со мной:
+- GitHub: [ReaGemt](https://github.com/ReaGemt)
+- Email: your_email@example.com
+
+## Лицензия
+Этот проект распространяется под лицензией MIT. См. [LICENSE](LICENSE) для деталей.
+
