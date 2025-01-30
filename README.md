@@ -46,27 +46,12 @@ python main.py
 python manage_whitelist.py
 ```
 
-## Пример кода
-Простой пример подключения и получения писем:
-
-```python
-from imaplib import IMAP4_SSL
-
-server = "imap.example.com"
-username = "your_email@example.com"
-password = "your_password"
-
-with IMAP4_SSL(server) as mail:
-    mail.login(username, password)
-    mail.select("inbox")
-    status, messages = mail.search(None, "ALL")
-    print("Всего писем:", len(messages[0].split()))
 ```
 
 ## Контакты
 Если у вас возникли вопросы или предложения, свяжитесь со мной:
 - GitHub: [ReaGemt](https://github.com/ReaGemt)
-- Email: your_email@example.com
+- Email: zero2028@inbox.ru
 
 ## Лицензия
 Этот проект распространяется под лицензией MIT. См. [LICENSE](LICENSE) для деталей.
